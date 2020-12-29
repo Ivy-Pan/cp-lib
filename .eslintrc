@@ -12,5 +12,8 @@
     "requireConfigFile": false
   },
   "plugins": ["@babel"],
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "rules": {
+    "no-console": "off"
+  }
 }
