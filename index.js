@@ -1,2 +1,3 @@
+export { default as copy } from './src/copy';
 export { default as request } from './src/request';
-export { utils } from './src/utils';
+export { default as typeOf } from './src/typeOf';
