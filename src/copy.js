@@ -2,6 +2,7 @@ import typeOf from './typeOf';
 
 const baseCopyTypes = ['number', 'string', 'boolean', 'symbol', 'function', 'undefined', 'null', 'NaN', 'infinity', '-infinity'];
 
+// 属于 baseCopyTypes 的返回自身，其他类型递归 clone
 const COPY_BY_TYPE = {
   baseCopy: param => param,
   date: date => new Date(date),
@@ -52,6 +53,11 @@ const COPY_BY_TYPE = {
   },
 };
 
+/**
+ * 克隆
+ * @param {any} data 待克隆对象
+ * @param {Boolean} isDeep 是否深度克隆
+ */
 const copy = (data, isDeep) => {
   const type = typeOf(data);
 
