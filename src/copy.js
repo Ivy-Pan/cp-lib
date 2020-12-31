@@ -1,28 +1,17 @@
 import typeOf from './typeOf';
 
-const BASE_COPY = {
-  number: num => num,
-  string: str => str,
-  boolean: bool => bool,
-  symbol: sb => sb,
-  function: fn => fn,
-  undefined: () => undefined,
-  null: () => null,
-  NaN: () => NaN,
-  infinity: () => Infinity,
-  '-infinity': () => -Infinity,
+const baseCopyTypes = ['number', 'string', 'boolean', 'symbol', 'function', 'undefined', 'null', 'NaN', 'infinity', '-infinity'];
+
+const COPY_BY_TYPE = {
+  baseCopy: param => param,
   date: date => new Date(date),
   error: err => new Error(err.message),
   regExp: reg => new RegExp(reg),
-  // Array, Object, Set, Map
-};
-
-const COMPLEX_COPY = {
   object: (data, isDeep, copy) => {
     if (isDeep) {
       const dup = {};
 
-      Object.entries(([key, value]) => {
+      Object.entries(data).forEach(([key, value]) => {
         dup[key] = copy(value, isDeep);
       });
 
@@ -31,7 +20,18 @@ const COMPLEX_COPY = {
 
     return { ...data };
   },
-  map: () => {},
+  map: (data, isDeep, copy) => {
+    const dup = new Map();
+
+    data.forEach((value, key) => {
+      dup.set(
+        isDeep ? copy(key, isDeep) : key,
+        isDeep ? copy(value, isDeep) : value,
+      );
+    });
+
+    return dup;
+  },
   array: (data, isDeep, copy) => {
     if (isDeep) return data.map(item => copy(item, isDeep));
 
@@ -54,11 +54,10 @@ const COMPLEX_COPY = {
 
 const copy = (data, isDeep) => {
   const type = typeOf(data);
-  const baseCopy = BASE_COPY[type];
 
-  if (baseCopy) return baseCopy(data);
-
-  return COMPLEX_COPY[type](data, isDeep, copy);
+  return baseCopyTypes.includes(type)
+    ? COPY_BY_TYPE.baseCopy(data)
+    : COPY_BY_TYPE[type](data, isDeep, copy);
 };
 
 export default copy;
