@@ -18,6 +18,7 @@
     "arrow-parens": ["error", "as-needed"],
     "func-names": ["warn", "as-needed"],
     "no-console": "off",
+    "no-param-reassign": "off",
     "no-underscore-dangle": "off",
     "prefer-promise-reject-errors": ["warn", {
       "allowEmptyReject": true

@@ -21,8 +21,7 @@ function parseTime(datetime, formatter = 'yyyy-MM-dd hh:mm:ss') {
     if (_key === 'w') return ['日', '一', '二', '三', '四', '五', '六'][value];
 
     return [...key].reduceRight((_timerStr, item, index) => {
-      // eslint-disable-next-line no-param-reassign
-      _timerStr += value[index];
+      _timerStr += value[index] || 0;
 
       return _timerStr;
     }, '');
