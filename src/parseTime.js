@@ -14,17 +14,13 @@ function parseTime(datetime, formatter = 'yyyy-MM-dd hh:mm:ss') {
     s: _datetime.getSeconds(),
     w: _datetime.getDay(),
   };
-  const timeStr = formatter.replace(/([yMdhmsw]+)/g, (result, key) => {
+  const timeStr = formatter.replace(/([yMdhmsw]+)/g, key => {
     const _key = key[0];
     const value = `${_formatter[_key]}`;
 
     if (_key === 'w') return ['日', '一', '二', '三', '四', '五', '六'][value];
 
-    return [...key].reduceRight((_timerStr, item, index) => {
-      _timerStr += value[index] || 0;
-
-      return _timerStr;
-    }, '');
+    return `${value}`.padStart(2, '0').slice(-key.length);
   });
 
   return timeStr;
