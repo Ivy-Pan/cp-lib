@@ -20,7 +20,7 @@ function parseTime(datetime, formatter = 'yyyy-MM-dd hh:mm:ss') {
 
     if (_key === 'w') return ['日', '一', '二', '三', '四', '五', '六'][value];
 
-    return `${value}`.padStart(2, '0').slice(-key.length);
+    return `${value}`.padStart(key.length, '0');
   });
 
   return timeStr;
