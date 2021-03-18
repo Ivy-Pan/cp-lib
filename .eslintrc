@@ -13,7 +13,7 @@
     "requireConfigFile": false
   },
   "plugins": ["@babel"],
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "airbnb-base/legacy"],
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "func-names": ["warn", "as-needed"],

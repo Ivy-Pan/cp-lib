@@ -5,6 +5,8 @@
  * readyState、onload
  * dataUrl(base64)
  */
-// function fileReader(blob) {
-//   const reader = new FileReader();
-// }
+function fileReader() {
+  // const reader = new FileReader();
+}
+
+export default fileReader;

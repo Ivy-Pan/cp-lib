@@ -27,7 +27,7 @@ const COPY_BY_TYPE = {
     data.forEach((value, key) => {
       dup.set(
         isDeep ? copy(key, isDeep) : key,
-        isDeep ? copy(value, isDeep) : value,
+        isDeep ? copy(value, isDeep) : value
       );
     });
 
@@ -50,7 +50,7 @@ const COPY_BY_TYPE = {
     }
 
     return [...data];
-  },
+  }
 };
 
 /**
@@ -58,12 +58,12 @@ const COPY_BY_TYPE = {
  * @param {any} data 待克隆对象
  * @param {Boolean} isDeep 是否深度克隆
  */
-const copy = (data, isDeep) => {
+const clone = (data, isDeep) => {
   const type = typeOf(data);
 
   return baseCopyTypes.includes(type)
     ? COPY_BY_TYPE.baseCopy(data)
-    : COPY_BY_TYPE[type](data, isDeep, copy);
+    : COPY_BY_TYPE[type](data, isDeep, clone);
 };
 
-export default copy;
+export default clone;
