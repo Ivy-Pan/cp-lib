@@ -5,7 +5,10 @@
   "scripts": {
     "lint": "eslint **/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "mocha --require @babel/register"
+    "test": "mocha --require @babel/register",
+    "add": "git add .",
+    "commit": "git commit -m 'merge'",
+    "push": "git push"
   },
   "lint-staged": {
     "*.js": [

@@ -9,8 +9,7 @@ dist
 # lock file
 package-lock.json
 yarn.lock
-packages/**/yarn.lock
-packages/**/package-lock.json
+package-lock.json
 
 # log file
 *.log

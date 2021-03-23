@@ -11,9 +11,10 @@ const _Watcher = (function watch() {
       watcher = this;
     }
 
-    on(name, consumer) {
+    on(name, cb) {
+      console.log(name);
       this._queue[name] = this._queue[name] || [];
-      this._queue.push(consumer);
+      this._queue[name].push(cb);
     }
 
     emit(name, ...args) {
@@ -21,8 +22,21 @@ const _Watcher = (function watch() {
 
       if (handlers) {
         handlers.forEach(handler => {
-          handler(...args);
+          console.log(...args);
+          handler.call(this, ...args);
         });
+      }
+    }
+
+    remove(name, fnName) {
+      if (name && this._queue[name]) {
+        if (fnName === undefined || fnName === null) {
+          delete this._queue[name];
+        } else {
+          const index = this._queue[name].find(fn => fn.name === fnName);
+
+          if (index > -1) this._queue[name].splice(index, 1);
+        }
       }
     }
   };

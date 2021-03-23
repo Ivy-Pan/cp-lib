@@ -7,10 +7,10 @@ module.exports = {
         useBuiltIns: 'usage',
         corejs: {
           version: 3,
-          proposals: true,
-        },
-      },
-    ],
+          proposals: true
+        }
+      }
+    ]
   ],
   plugins: [
     [
@@ -18,9 +18,9 @@ module.exports = {
       {
         corejs: {
           version: 3,
-          proposals: true,
-        },
-      },
-    ],
-  ],
+          proposals: true
+        }
+      }
+    ]
+  ]
 };
