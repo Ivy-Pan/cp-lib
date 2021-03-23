@@ -8,6 +8,7 @@
     "test": "mocha --require @babel/register",
     "add": "git add .",
     "commit": "git commit -m 'merge'",
+    "pull": "git pull",
     "push": "git push"
   },
   "lint-staged": {
