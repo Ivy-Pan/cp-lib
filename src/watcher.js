@@ -25,12 +25,12 @@ class Watcher {
     }
   }
 
-  remove(name, fnName) {
+  remove(name, cbName) {
     if (name && this._queue[name]) {
-      if (fnName === undefined || fnName === null) {
+      if (!cbName) {
         delete this._queue[name];
       } else {
-        const index = this._queue[name].find(fn => fn.name === fnName);
+        const index = this._queue[name].find(fn => fn.name === cbName);
 
         if (index > -1) this._queue[name].splice(index, 1);
       }
