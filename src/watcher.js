@@ -10,12 +10,12 @@ class Watcher {
     watcher[name] = this;
   }
 
-  on(name, cb) {
+  bind(name, cb) {
     this._queue[name] = this._queue[name] || [];
     this._queue[name].push(cb);
   }
 
-  emit(name, ...args) {
+  dispatch(name, ...args) {
     const handlers = this._queue[name];
 
     if (handlers) {
