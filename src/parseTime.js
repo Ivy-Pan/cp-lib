@@ -12,7 +12,7 @@ function parseTime(datetime, formatter = 'yyyy-MM-dd hh:mm:ss') {
     h: _datetime.getHours(),
     m: _datetime.getMinutes(),
     s: _datetime.getSeconds(),
-    w: _datetime.getDay()
+    w: _datetime.getDay(),
   };
   const timeStr = formatter.replace(/([yMdhmsw]+)/g, key => {
     const _key = key[0];

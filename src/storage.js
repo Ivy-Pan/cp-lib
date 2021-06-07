@@ -17,7 +17,7 @@ function save(storage, key, data) {
 class Storage {
   constructor(sign, config = {}) {
     const {
-      pattern = localStorage
+      pattern = localStorage,
     } = config;
 
     this._sign = sign;
@@ -48,7 +48,7 @@ class Storage {
 
         save(_pattern, _sign, {
           ...data,
-          [prop]: value
+          [prop]: value,
         });
 
         return true;
@@ -67,16 +67,16 @@ class Storage {
 
             return {
               ...rest,
-              [key]: value
+              [key]: value,
             };
           },
-          {}
+          {},
         );
 
         save(_pattern, _sign, restData);
 
         return true;
-      }
+      },
     });
   }
 }
